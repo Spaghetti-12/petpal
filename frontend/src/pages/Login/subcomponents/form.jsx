@@ -16,7 +16,7 @@ export function loginform() {
   const handleSubmit = (event) => {
     event.preventDefault();
     Axios.post(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/login/`,
+      `https://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/login/`,
       {
         username: inputs.username,
         password: inputs.password,
