@@ -1,4 +1,5 @@
 import "../application.css";
+import { baseURL } from "../../../urlConfig";
 
 export function CommentBox(comment) {
     return (

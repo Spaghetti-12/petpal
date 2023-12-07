@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { NotifBox } from "./notifbox";
 import "./notif.css"
+import { baseURL } from "../../../urlConfig";
 
 export function NotifDropdown() {
   const [notifs, setNotifs] = useState({});
@@ -12,6 +13,18 @@ export function NotifDropdown() {
   const [isPrev, setIsPrev] = useState(false);
   var [page, setPage] = useState(1);
   const navigate = useNavigate();
+  const [detailsClosed, setDetailsClosed] = useState(true);
+
+  const handleToggleDetails = () => {
+    const detailsElement = document.getElementsByClassName("left-dropdown")[0];
+    if (detailsElement) {
+      if (detailsElement.open) {
+        setDetailsClosed(true);
+      } else {
+        setDetailsClosed(false);
+      }
+    }
+  };
 
   useEffect(() => {
     getNotifs();
@@ -37,7 +50,7 @@ export function NotifDropdown() {
   const getNotifs = async() => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      "http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/notifications/notifications/",
+      `${baseURL}notifications/notifications/`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -124,7 +137,7 @@ export function NotifDropdown() {
   }
 
   return (
-      <details className="left-dropdown">
+      <details className={`left-dropdown ${detailsClosed ? 'closed' : ''}`} onClick={handleToggleDetails}>
         <summary>
           <b className="dropdown-tag">Notifications</b>
         </summary>

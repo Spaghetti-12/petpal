@@ -2,6 +2,7 @@ import "./applicationbox.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import { baseURL } from "../../../urlConfig";
 
 export function ApplicationBox(application) {
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ export function ApplicationBox(application) {
         const fetchApplicationInfo = async () => {
           try {
             const response = await Axios.get(
-                `http://localhost:8000/listings/listing/${application.listing}/`,
+                `${baseURL}/listings/listing/${application.listing}/`,
                 {
                     headers: {
                         "Content-Type": "application/json",

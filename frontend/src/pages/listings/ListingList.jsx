@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { header } from "../PublicComponents/header.jsx";
 import { sidebar } from "../PublicComponents/user_sidebar.jsx";
 import { ListingBox } from "./subcomponents/listingbox";
+import { baseURL } from "../../urlConfig.js";
 
 export function ListingList() {
   const [inputs, setInputs] = useState({
@@ -45,7 +46,7 @@ export function ListingList() {
   const getListings = async () => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/listings/list/?ordering=` + inputs.ascendingDescending
+      `${baseURL}listings/list/?ordering=` + inputs.ascendingDescending
       + inputs.sortBySelector + "&" + inputs.searchBySelector + "=" + inputs.searchContent,
       {
         headers: {

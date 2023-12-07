@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import Axios from "axios";
 import {redirect, useNavigate, useParams} from "react-router-dom";
 import "./listingform.css"
+import { baseURL } from "../../../urlConfig";
 
 export function form() {
   var [inputs, setInputs] = useState({});
@@ -25,7 +26,7 @@ export function form() {
   const getListing = async () => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/listings/listing/` + id.toString() + "/",
+      `${baseURL}listings/listing/` + id.toString() + "/",
       {
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +54,7 @@ export function form() {
     const token = localStorage.getItem("token");
     Axios.put(
       // TODO: CHANGE URL TO THE DJANGO URL
-      "http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/listings/update/" + id.toString() + "/",
+      `${baseURL}listings/update/` + id.toString() + "/",
         {
             name: inputs.name,
             breed: inputs.breed,

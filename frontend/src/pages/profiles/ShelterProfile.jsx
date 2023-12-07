@@ -3,6 +3,7 @@ import "../PublicCSS/templatestyle.css";
 import { header } from "../PublicComponents/header.jsx";
 import { sidebar } from "../PublicComponents/shelter_sidebar.jsx";
 import { profileform } from "./shelter_subcomponents/shelterprofileform";
+import { baseURL } from "../../urlConfig.js";
 
 export function ShelterProfile() {
   return (

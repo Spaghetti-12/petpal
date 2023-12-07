@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../account.css";
+import { baseURL } from "../../../urlConfig";
 
 export function profileform() {
   const [inputs, setInputs] = useState({});
@@ -25,7 +26,7 @@ export function profileform() {
   const getProfile = async () => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/user/profile/`,
+      `${baseURL}accounts/user/profile/`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +69,7 @@ export function profileform() {
       formData.append('userProfile.profilePic', inputs.profilePic);
     }
     Axios.put(
-      `hhttp://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/user/update/`,
+      `${baseURL}accounts/user/update/`,
       formData,
       {
         headers: {

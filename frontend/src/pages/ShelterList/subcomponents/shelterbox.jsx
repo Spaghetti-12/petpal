@@ -1,5 +1,6 @@
 import "../shelterlist.css";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../../urlConfig";
 
 export function ShelterBox(shelterInfo) {
   const navigate = useNavigate();

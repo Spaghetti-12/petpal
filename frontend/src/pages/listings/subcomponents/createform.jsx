@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import Axios from "axios";
 import {redirect, useNavigate} from "react-router-dom";
 import "./listingform.css"
+import { baseURL } from "../../../urlConfig";
 
 export function form() {
   var [inputs, setInputs] = useState({gender: "M", status:"1"});
@@ -26,7 +27,7 @@ export function form() {
   const getProfile = async () => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/shelter/profile/`,
+      `${baseURL}accounts/shelter/profile/`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +54,7 @@ export function form() {
     event.preventDefault();
     const token = localStorage.getItem("token");
     Axios.post(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/listings/creation/`,
+      `${baseURL}listings/creation/`,
         {
             name: inputs.name,
             breed: inputs.breed,

@@ -3,6 +3,7 @@ import "../PublicCSS/templatestyle.css";
 import { header } from "../PublicComponents/header.jsx";
 import { sidebar } from "../PublicComponents/user_sidebar.jsx";
 import { form } from "./Form";
+import { baseURL } from "../../urlConfig.js";
 
 export function UserApplication() {
   return (

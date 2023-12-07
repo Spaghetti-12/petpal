@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { header } from "../PublicComponents/header.jsx";
 import { sidebar } from "../PublicComponents/shelter_sidebar.jsx";
 import { ShelterBox } from "./subcomponents/shelterbox";
+import { baseURL } from "../../urlConfig.js";
 
 export function ShelterShelterList() {
   const [shelters, setShelters] = useState({});
@@ -18,7 +19,7 @@ export function ShelterShelterList() {
   const getShelters = async () => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/shelter/list/`,
+      `${baseURL}accounts/shelter/list/`,
       {
         headers: {
           "Content-Type": "application/json",

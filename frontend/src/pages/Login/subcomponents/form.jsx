@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../../urlConfig";
 
 export function loginform() {
   const [inputs, setInputs] = useState({});
@@ -16,7 +17,7 @@ export function loginform() {
   const handleSubmit = (event) => {
     event.preventDefault();
     Axios.post(
-      `https://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/login/`,
+      `${baseURL}accounts/login/`,
       {
         username: inputs.username,
         password: inputs.password,

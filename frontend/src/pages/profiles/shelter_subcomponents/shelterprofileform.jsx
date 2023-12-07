@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../account.css";
+import { baseURL } from "../../../urlConfig";
 
 export function profileform() {
   const [inputs, setInputs] = useState({});
@@ -25,7 +26,7 @@ export function profileform() {
   const getProfile = async () => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/shelter/profile/`,
+      `${baseURL}accounts/shelter/profile/`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +53,7 @@ export function profileform() {
     event.preventDefault();
     console.log(inputs);
     Axios.put(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/shelter/update/`,
+      `${baseURL}accounts/shelter/update/`,
       {
         password: inputs.password,
         repeat_password: inputs.repeat_password,

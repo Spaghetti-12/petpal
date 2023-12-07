@@ -2,6 +2,7 @@ import { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../signupstyle.css";
+import { baseURL } from "../../../urlConfig";
 
 export function form() {
   var [inputs, setInputs] = useState({});
@@ -46,7 +47,7 @@ export function form() {
     formData.append('userProfile.address', inputs.address);
     formData.append('userProfile.profilePic', inputs.profilePic);
     Axios.post(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/user/registration/`,
+      `${baseURL}accounts/user/registration/`,
       formData,
       {
         headers: {

@@ -6,6 +6,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {InfoBox} from "./subcomponents/InfoBox";
 import { CommentBox } from "./subcomponents/CommentBox";
+import { baseURL } from "../../urlConfig.js";
 
 export function UserShelterView() {
   const [inputs, setInputs] = useState({});
@@ -24,7 +25,7 @@ export function UserShelterView() {
   const getShelter = async () => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/shelter/shelter/` + id.toString() + "/",
+      `${baseURL}accounts/shelter/shelter/` + id.toString() + "/",
       {
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +40,7 @@ export function UserShelterView() {
       setShelter(response.data);
       // Get the comments
       const response_comments = await Axios.get(
-        `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/comments/list/shelter/` + id.toString() + `/?ordering=-creation_time&page=` + page,
+        `${baseURL}comments/list/shelter/` + id.toString() + `/?ordering=-creation_time&page=` + page,
         {
           headers: {
             "Content-Type": "application/json",
@@ -117,7 +118,7 @@ export function UserShelterView() {
   const handleSubmit = (event) => {
     event.preventDefault();
     Axios.post(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/comments/creation/shelter/` + id.toString() + "/",
+      `${baseURL}comments/creation/shelter/` + id.toString() + "/",
       {
         content: inputs.commentContent
       },
@@ -129,7 +130,7 @@ export function UserShelterView() {
       },
     ).then((response) => {
       getComments(
-        `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/comments/list/shelter/` + id.toString() + `/?ordering=-creation_time&page=` + page,
+        `${baseURL}comments/list/shelter/` + id.toString() + `/?ordering=-creation_time&page=` + page,
         localStorage.getItem("token")
       );
     }).catch((error) => {

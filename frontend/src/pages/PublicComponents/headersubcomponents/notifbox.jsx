@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../../urlConfig";
 
 export function NotifBox(notif){
 
@@ -16,7 +17,7 @@ export function NotifBox(notif){
     const getNotif = async() => {
         const token = localStorage.getItem("token");
         const response = await Axios.get(
-          "http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/notifications/notification/" + notif.pk.toString() + "/",
+            `${baseURL}notifications/notification/` + notif.pk.toString() + "/",
           {
             headers: {
               "Content-Type": "application/json",
@@ -43,7 +44,7 @@ export function NotifBox(notif){
         if (status === 1) {
             const token = localStorage.getItem("token");
             const response = await Axios.put(
-                "http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/notifications/update/" + (notif.pk).toString() + "/",
+                `${baseURL}notifications/update/` + (notif.pk).toString() + "/",
                 {status: 2},
                 {
                     headers: {

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { header } from "../PublicComponents/header.jsx";
 import { sidebar } from "../PublicComponents/shelter_sidebar.jsx";
 import { ListingBox } from "./subcomponents/listingbox";
+import { baseURL } from "../../urlConfig.js";
 
 export function MyListings() {
   const [inputs, setInputs] = useState({
@@ -29,7 +30,7 @@ export function MyListings() {
   function getProfile() {
     const token = localStorage.getItem("token");
     const response = Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/shelter/profile/`,
+      `${baseURL}accounts/shelter/profile/`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +70,7 @@ export function MyListings() {
   function getListings(name) {
     const token = localStorage.getItem("token");
     const response =  Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/listings/list/?ordering=` + inputs.ascendingDescending
+      `${baseURL}listings/list/?ordering=` + inputs.ascendingDescending
       + inputs.sortBySelector + "&" + inputs.searchBySelector + "=" + inputs.searchContent + "&shelter_profile__name="
         + name,
       {

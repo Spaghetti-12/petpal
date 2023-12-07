@@ -1,6 +1,7 @@
 import "./signupstyle.css";
 import "../PublicCSS/homepage.css";
 import { form } from "./user_subcomponents/usersignupform.jsx";
+import { baseURL } from "../../urlConfig.js";
 
 export function UserSignup() {
   return (

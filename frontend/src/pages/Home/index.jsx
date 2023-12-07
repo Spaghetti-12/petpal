@@ -1,4 +1,5 @@
 import logo from "./img.png";
+import { baseURL } from "../../urlConfig";
 
 export function Home() {
   const image = <img src={logo}></img>;

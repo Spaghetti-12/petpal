@@ -1,5 +1,6 @@
 import { loginform } from "./subcomponents/form";
 import { signupbox } from "./subcomponents/signup-box";
+import { baseURL } from "../../urlConfig";
 
 import logo from "../PublicImages/logo.png";
 import "./login.css";

@@ -101,6 +101,10 @@ details {
   border-color: #3461a8;
 }
 
+details.closed {
+  border-color: #F8EFA2
+}
+
 details.left-dropdown {
   left: 10px;
   top: 7px;
@@ -188,7 +192,7 @@ details.right-dropdown {
   }
 
   .dropdown-tag {
-    display: none;
+    font-size: 0.8rem;
   }
 
   .side-bar {

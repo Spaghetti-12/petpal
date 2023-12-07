@@ -6,6 +6,7 @@ import { form } from "./Form";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
+import { baseURL } from "../../urlConfig.js";
 
 export function ShelterApplicationView() {
     const { id } = useParams();
@@ -15,7 +16,7 @@ export function ShelterApplicationView() {
         const fetchListingInfo = async () => {
           try {
             const response = await Axios.get(
-                `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/applications/application/${id}/`,
+                `${baseURL}applications/application/${id}/`,
                 {
                     headers: {
                         "Content-Type": "application/json",

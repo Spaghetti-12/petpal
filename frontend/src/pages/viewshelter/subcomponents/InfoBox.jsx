@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../shelter-information.css";
+import { baseURL } from "../../../urlConfig";
 
 export function InfoBox(shelter) {
     const navigate = useNavigate();

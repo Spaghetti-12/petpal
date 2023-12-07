@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../../urlConfig";
 
 export function form() {
   const [inputs, setInputs] = useState({});
@@ -28,7 +29,7 @@ export function form() {
   const handleSubmit = (event) => {
     event.preventDefault();
     Axios.post(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/shelter/registration/`,
+      `${baseURL}accounts/shelter/registration/`,
       {
         username: inputs.username,
         password: inputs.password,

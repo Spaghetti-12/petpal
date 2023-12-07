@@ -1,6 +1,7 @@
 import "./signupstyle.css";
 import "../PublicCSS/homepage.css";
 import { form } from "./shelter_subcomponents/sheltersignupform.jsx";
+import { baseURL } from "../../urlConfig.js";
 
 export function ShelterSignup() {
   return (

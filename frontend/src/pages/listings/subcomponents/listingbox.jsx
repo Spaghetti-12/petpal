@@ -2,6 +2,7 @@ import "./listingbox.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import { baseURL } from "../../../urlConfig";
 
 export function ListingBox(listing) {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ export function ListingBox(listing) {
         const fetchShelterInfo = async () => {
           try {
             const response = await Axios.get(
-                `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/accounts/shelter/shelter/${listing.shelter_profile}/`,
+                `${baseURL}accounts/shelter/shelter/${listing.shelter_profile}/`,
                 {
                     headers: {
                         "Content-Type": "application/json",

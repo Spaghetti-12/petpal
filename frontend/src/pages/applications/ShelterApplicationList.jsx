@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { header } from "../PublicComponents/header.jsx";
 import { sidebar } from "../PublicComponents/shelter_sidebar.jsx";
 import { ApplicationBox } from "./subcomponents/applicationbox";
+import { baseURL } from "../../urlConfig.js";
 
 export function ShelterApplicationList() {
   const [inputs, setInputs] = useState({
@@ -43,10 +44,10 @@ export function ShelterApplicationList() {
 
   const getApplications = async (updatedValues = null) => {
     const token = localStorage.getItem("token");
-    var url = `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/applications/list/?ordering=` + inputs.ascendingDescending
+    var url = `${baseURL}applications/list/?ordering=` + inputs.ascendingDescending
     + inputs.sortBySelector + "&status=" + inputs.filterContent;
     if (updatedValues) {
-        url = `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/applications/list/?ordering=` + updatedValues.ascendingDescending
+        url = `${baseURL}applications/list/?ordering=` + updatedValues.ascendingDescending
         + updatedValues.sortBySelector + "&status=" + updatedValues.filterContent;
     }
     console.log(url);
@@ -157,11 +158,7 @@ export function ShelterApplicationList() {
       {sidebar()}
       <div className="content-box">
         <div className="wrap-box">
-          <div
-            style={{width: '100%'}}
-          >
-            <div style={{display: 'flex', alignItems: 'center', width: '100%'}}>
-              <div style={{display: 'flex', alignItems: 'center', width: '60%'}}>
+              <div className="component-box">
                 <label htmlFor="sortBySelector" style={{margin:"5px"}}>
                   Sort By
                 </label>
@@ -184,7 +181,7 @@ export function ShelterApplicationList() {
                   <option value="-">Descending</option>
                 </select>
               </div>
-              <div style={{display: 'flex', alignItems: 'center', justifyContent: "flex-end", width: '40%'}}>
+              <div className="component-box">
                 <label htmlFor="filterContent" style={{margin:"5px"}}>
                   Status
                 </label>
@@ -202,9 +199,7 @@ export function ShelterApplicationList() {
                 </select>
               </div>
             </div>
-          </div>
           <div className="box-container-for-shelter-list">{createBoxes()}</div>
-        </div>
         {PageButtons()}
       </div>
     </div>

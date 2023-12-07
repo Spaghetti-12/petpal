@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { header } from "../PublicComponents/header.jsx";
 import { sidebar } from "../PublicComponents/user_sidebar.jsx";
 import { ApplicationBox } from "./subcomponents/applicationbox";
+import { baseURL } from "../../urlConfig.js";
 
 export function UserApplicationList() {
   const [inputs, setInputs] = useState({
@@ -43,10 +44,10 @@ export function UserApplicationList() {
 
   const getApplications = async (updatedValues = null) => {
     const token = localStorage.getItem("token");
-    var url = `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/applications/list/?ordering=` + inputs.ascendingDescending
+    var url = `${baseURL}applications/list/?ordering=` + inputs.ascendingDescending
     + inputs.sortBySelector + "&status=" + inputs.filterContent;
     if (updatedValues) {
-        url = `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/applications/list/?ordering=` + updatedValues.ascendingDescending
+        url = `${baseURL}applications/list/?ordering=` + updatedValues.ascendingDescending
         + updatedValues.sortBySelector + "&status=" + updatedValues.filterContent;
     }
     console.log(url);

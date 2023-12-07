@@ -5,6 +5,7 @@ import { sidebar } from "../PublicComponents/user_sidebar.jsx";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {ListingBox} from "./subcomponents/listingbox";
+import { baseURL } from "../../urlConfig.js";
 
 export function ViewListing() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ export function ViewListing() {
   const getListing = async () => {
     const token = localStorage.getItem("token");
     const response = await Axios.get(
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/listings/listing/` + id.toString() + "/",
+      `${baseURL}listings/listing/` + id.toString() + "/",
       {
         headers: {
           "Content-Type": "application/json",

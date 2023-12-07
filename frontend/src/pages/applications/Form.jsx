@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./application.css";
 import { useParams } from "react-router-dom";
 import { CommentBox } from "./subcomponents/CommentBox";
+import { baseURL } from "../../urlConfig";
 
 export function form(application=null) {
   const [inputs, setInputs] = useState({});
@@ -32,7 +33,7 @@ export function form(application=null) {
     const token = localStorage.getItem("token");
     const response_comments = await Axios.get(
       // TODO: CHANGE URL TO THE DJANGO URL
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/comments/list/application/` + id.toString() + `/?ordering=-creation_time&page=` + page,
+      `${baseURL}comments/list/application/` + id.toString() + `/?ordering=-creation_time&page=` + page,
       {
         headers: {
           "Content-Type": "application/json",
@@ -107,7 +108,7 @@ export function form(application=null) {
     event.preventDefault();
     Axios.post(
       // TODO: CHANGE URL TO THE DJANGO URL
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/comments/creation/application/` + id.toString() + "/",
+      `${baseURL}comments/creation/application/` + id.toString() + "/",
       {
         content: inputs.commentContent
       },
@@ -119,7 +120,7 @@ export function form(application=null) {
       },
     ).then((response) => {
       getComments(
-        `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/comments/list/application/` + id.toString() + `/?ordering=-creation_time&page=` + page,
+        `${baseURL}comments/list/application/` + id.toString() + `/?ordering=-creation_time&page=` + page,
         localStorage.getItem("token")
       );
     }).catch((error) => {
@@ -153,7 +154,7 @@ export function form(application=null) {
     console.log(formData);
     Axios.post(
       // TODO: CHANGE URL TO THE DJANGO URL
-      `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/applications/creation/${id}/`,
+      `${baseURL}applications/creation/${id}/`,
       formData,
       {
         headers: {
@@ -189,7 +190,7 @@ export function form(application=null) {
 
   const modifyApplication = async (status) => {
     const token = localStorage.getItem("token");
-    var url = `http://django-env.eba-89phmv2c.us-west-2.elasticbeanstalk.com/applications/updater/${id}/`;
+    var url = `${baseURL}applications/updater/${id}/`;
     Axios.put(
       url,
       {
