@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/login",
   "dependencies": {
     "@aws-amplify/cli": "^12.8.2",
     "@testing-library/jest-dom": "^5.17.0",
